@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 116835221}
   - component: {fileID: 116835220}
   - component: {fileID: 116835219}
+  - component: {fileID: 116835223}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -290,7 +291,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 25
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -422,6 +423,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &116835223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116835218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04092e20d9db1b4594b7f5229c15f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::doodlemove
+  moveSpeed: 20
+  doodle: {fileID: 116835218}
+  doodle_rb: {fileID: 116835219}
 --- !u!1001 &133864192556154789
 PrefabInstance:
   m_ObjectHideFlags: 0
