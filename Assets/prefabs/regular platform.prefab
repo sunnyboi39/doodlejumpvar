@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 407258603659849739}
   - component: {fileID: 6838898723853867223}
   m_Layer: 0
-  m_Name: Square
+  m_Name: regular platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
