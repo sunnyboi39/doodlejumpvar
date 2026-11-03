@@ -8,11 +8,15 @@ public class moving_platform : MonoBehaviour
     
     void Start()
     {
+        if (cameraConstraint == null)
+        {
+            cameraConstraint = Camera.main.transform;
+        }
         float cameraHeight = Camera.main.orthographicSize * 2f;
         float cameraWidth = cameraHeight * Camera.main.aspect;
         Vector3 currentPosition = transform.position;
-        currentPosition.x = Mathf.CeilToInt(cameraConstraint.position.x) -.5f*(Mathf.CeilToInt(cameraWidth));
-        currentPosition.z = -1;
+        //currentPosition.x = Mathf.CeilToInt(cameraConstraint.position.x) -.5f*(Mathf.CeilToInt(cameraWidth));
+        currentPosition.z = 0;
         transform.position = currentPosition;
         Debug.Log("start transform position: " + transform.position);
 
@@ -60,7 +64,7 @@ public class moving_platform : MonoBehaviour
 
         }
 
-        currentPosition.z = -1;
+        currentPosition.z = 0;
         transform.position = currentPosition;
        
         Debug.Log("transform position: "+ transform.position.x);

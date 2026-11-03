@@ -17,7 +17,7 @@ public class doodlemove : MonoBehaviour
         float cameraWidth = cameraHeight * Camera.main.aspect;
         Vector3 currentPosition = transform.position;
         currentPosition.x = 0;
-        currentPosition.z = -1;
+        currentPosition.z = 0;
         transform.position = currentPosition;
         Debug.Log("start transform position: " + transform.position);
 
@@ -38,7 +38,7 @@ public class doodlemove : MonoBehaviour
         float cameraRightBoundry = (Mathf.CeilToInt(cameraConstraint.position.x)) + .5f * (Mathf.CeilToInt(cameraWidth));
         Debug.Log("right bound: " + cameraRightBoundry);
 
-        currentPosition.z = -1;
+        currentPosition.z = 0;
         transform.position = currentPosition;
         Debug.Log("update doodle move transform position: " + transform.position);
 
