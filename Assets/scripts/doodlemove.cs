@@ -25,12 +25,12 @@ public class doodlemove : MonoBehaviour
     }// end start function
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         float cameraHeight = Camera.main.orthographicSize * 2f;
         float cameraWidth = cameraHeight * Camera.main.aspect;
-        Vector3 currentPosition = transform.position;
+        //Vector3 currentPosition = transform.position;
         float cameraLeftBoundry = (Mathf.CeilToInt(cameraConstraint.position.x)) - .5f * (Mathf.CeilToInt(cameraWidth));
         Debug.Log("left bound: " + cameraLeftBoundry);
 
@@ -38,20 +38,20 @@ public class doodlemove : MonoBehaviour
         float cameraRightBoundry = (Mathf.CeilToInt(cameraConstraint.position.x)) + .5f * (Mathf.CeilToInt(cameraWidth));
         Debug.Log("right bound: " + cameraRightBoundry);
 
-        currentPosition.z = 0;
-        transform.position = currentPosition;
+        //currentPosition.z = 0;
+        //transform.position = currentPosition;
         Debug.Log("update doodle move transform position: " + transform.position);
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
 
             Debug.Log("leftarrow key pressed");
-            currentPosition.x = currentPosition.x - moveSpeed;
+            transform.position=new Vector3(transform.position.x-moveSpeed, transform.position.y,0);
             
-            if (currentPosition.x <= cameraLeftBoundry) // if hits left bound-appear at right bound
+            if (transform.position.x <= cameraLeftBoundry) // if hits left bound-appear at right bound
             {
                 Debug.Log("hit left bound");
-                currentPosition.x = cameraRightBoundry - 5;
+                transform.position = new Vector3( cameraRightBoundry-5, transform.position.y, 0);
 
             }
 
@@ -61,17 +61,18 @@ public class doodlemove : MonoBehaviour
         {
 
             Debug.Log("right arrow key pressed");
-            currentPosition.x = currentPosition.x + moveSpeed;
-            if (currentPosition.x >= cameraRightBoundry) // if hits right bound-appear at left bound
+            transform.position = new Vector3(transform.position.x + moveSpeed, transform.position.y, 0);
+
+            if (transform.position.x >= cameraRightBoundry) // if hits right bound-appear at left bound
             {
                 Debug.Log("hit right bound");
-                currentPosition.x = cameraLeftBoundry + 5;
+                transform.position = new Vector3(cameraLeftBoundry + 5, transform.position.y, 0);
 
             }
 
         }
 
-        transform.position = currentPosition;
+        //transform.position = currentPosition;
 
     }
     

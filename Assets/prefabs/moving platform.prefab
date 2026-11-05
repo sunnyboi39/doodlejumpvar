@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1244954033013269990}
   - component: {fileID: 2072993156728992524}
   - component: {fileID: 6844738296055211547}
+  - component: {fileID: 4485078700003698334}
   m_Layer: 0
   m_Name: moving platform
   m_TagString: Untagged
@@ -153,3 +154,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::moving_platform
   cameraConstraint: {fileID: 0}
   incNum: 350
+--- !u!114 &4485078700003698334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149299596737492576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3750d103210cc44a7520a9adb46390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::colliderEnable
+  doodle: {fileID: 0}

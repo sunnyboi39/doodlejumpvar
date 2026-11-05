@@ -24,7 +24,7 @@ public class moving_platform : MonoBehaviour
     }
 
 
-    private void FixedUpdate() // Debug.Log("camera position: " + cameraWidth + " moving to: " +(Mathf.CeilToInt(cameraWidth)) + .5f * (Mathf.CeilToInt(cameraWidth)));
+    void FixedUpdate() // Debug.Log("camera position: " + cameraWidth + " moving to: " +(Mathf.CeilToInt(cameraWidth)) + .5f * (Mathf.CeilToInt(cameraWidth)));
     {
         float cameraHeight = Camera.main.orthographicSize * 2f;
         float cameraWidth = cameraHeight * Camera.main.aspect;
