@@ -8,7 +8,7 @@ public class camera : MonoBehaviour
         Vector3 currentPosition = transform.position;
         // a transform position
         currentPosition.x = 0;
-        currentPosition.y = Mathf.Lerp(currentPosition.y, followObj.position.y, 10f);
+        currentPosition.y = Mathf.Lerp(currentPosition.y, followObj.position.y, 1f);
         currentPosition.z = -1;
         transform.position = currentPosition;
         //Debug.Log("transform position: "+ transform.position);

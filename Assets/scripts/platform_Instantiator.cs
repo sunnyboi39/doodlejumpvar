@@ -14,7 +14,7 @@ public class platform_Instantiator : MonoBehaviour
     float doodleStart;
     float storeDoodleY;
     float doodleScore;
-    public int instantiateInc; //prob 500; every certain amount up, instantiate group of platforms
+    float instantiateInc; // every certain amount up doodle goes, instantiate group of platforms
     int groupCounter=1;
     public int groupNum;//number of platforms in an instantiated group
 
@@ -34,7 +34,8 @@ public class platform_Instantiator : MonoBehaviour
             Debug.Log("PLATFORMS IN PLATFORMPROB: "+ plat);
 
         }
-        SpawnGroup();
+        SpawnGroup("middle");
+        SpawnGroup("bottom");
     }
 
     // Update is called once per frame
@@ -49,9 +50,10 @@ public class platform_Instantiator : MonoBehaviour
         doodleScore= doodle.transform.position.y-doodleStart;// score will always start at zero no matter where doodle starts
 
         Debug.Log("doodle score: "+ doodleScore);
-        if (doodleScore>(instantiateInc*groupCounter))
+        instantiateInc = .5f * cameraHeight;
+        if (doodleScore>((instantiateInc)*groupCounter))
         {
-            SpawnGroup();
+            SpawnGroup("top");
             groupCounter++;
         }
 
@@ -78,13 +80,24 @@ public class platform_Instantiator : MonoBehaviour
         }
 
     }
-    void SpawnGroup()
+    void SpawnGroup(string screenPlacement)//top bottom or middle
     {
 
         int platformCounter = 0;
         while (platformCounter<groupNum)
         {
-            SpawnPlatform(XRandomizer(), YRandomizer());
+            if (screenPlacement == "top")
+            {
+                SpawnPlatform(XRandomizer(), YRandomizer("top"));
+            }
+            else if (screenPlacement == "bottom")
+            {
+                SpawnPlatform(XRandomizer(), YRandomizer("bottom"));
+            }
+            else
+            {
+                SpawnPlatform(XRandomizer(), YRandomizer("middle"));
+            }
             platformCounter++;
         }
     }
@@ -101,13 +114,25 @@ public class platform_Instantiator : MonoBehaviour
         return xSection;
     }
 
-    float YRandomizer()
+    float YRandomizer(string screenPlacement)//choose where to place platform group top(above the screen) bottom(lower half of screen) or middle(top half of screen)
     {
+        float ySection;
         float cameraPos = Camera.main.transform.position.y;
         float cameraHeightHalf = Camera.main.orthographicSize; //half camera height
         float bottomOfScreen = cameraPos - cameraHeightHalf;
+        float topOfScreen= cameraPos + cameraHeightHalf;
         int randint = UnityEngine.Random.Range(0, spacing + 1);
-        float ySection =cameraPos+(((cameraHeightHalf) / spacing)*randint);
+        if (screenPlacement == "top")
+        {
+            ySection = (topOfScreen-20) + (((2 * cameraHeightHalf) / spacing) * randint);
+        } else if (screenPlacement == "bottom")
+        {
+            ySection = bottomOfScreen + (((2 * cameraHeightHalf) / spacing) * randint);
+        }
+        else
+        {
+            ySection = cameraPos + (((2 * cameraHeightHalf) / spacing) * randint);
+        }
         return ySection;
 
 

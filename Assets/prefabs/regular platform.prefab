@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: aa6da3e64a58425498fde504c82e1b7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,4 +151,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3750d103210cc44a7520a9adb46390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::colliderEnable
-  doodle: {fileID: 2140398720574017709, guid: 7eac7876670d02b48afe6df3699fa79e, type: 3}
