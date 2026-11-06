@@ -5,6 +5,7 @@ public class moving_platform : MonoBehaviour
     public Transform cameraConstraint; // i want the platform to start at x= right edge of camera an move to the left edge all while staying at the y it was instaniated at
     public int incNum;// a number to divide the screen width so that the platform moves an equal amount each frame might also use time later on  if it doesnt feel smooth enough
     bool movingRight = true;
+    public Rigidbody2D movingPlat;
     
     void Start()
     {
@@ -64,21 +65,22 @@ public class moving_platform : MonoBehaviour
 
         }
 
-        currentPosition.z = 0;
-        transform.position = currentPosition;
+      
        
         Debug.Log("transform position: "+ transform.position.x);
 
-
+        transform.position = currentPosition;
 
         void moveRight()
         {
-            currentPosition.x =currentPosition.x+ (Mathf.CeilToInt(cameraWidth)/incNum);
+            movingPlat.MovePosition(new Vector3(currentPosition.x + (Mathf.CeilToInt(cameraWidth) / incNum), transform.position.y, 0));
+            
+            
             Debug.Log("movin right: "+ currentPosition.x);
         }
         void moveLeft()
         {
-            currentPosition.x = currentPosition.x -(Mathf.CeilToInt(cameraWidth) / incNum);
+            movingPlat.MovePosition(new Vector3(currentPosition.x - (Mathf.CeilToInt(cameraWidth) / incNum), transform.position.y, 0));
             Debug.Log("movin right: " +currentPosition.x);
         }
     }

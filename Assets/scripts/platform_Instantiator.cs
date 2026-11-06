@@ -7,6 +7,13 @@ public class platform_Instantiator : MonoBehaviour
     public GameObject regular;
 
     public GameObject hover;
+    public GameObject moon;
+    public GameObject star;
+    public GameObject jupiter;
+    public GameObject neptune;
+    public GameObject uranus;
+    public GameObject space;
+
     GameObject clone;
     public int spaceDivider; //For randomizing x for platform
     public int spacing; // for spacing y coordinates of each platform
@@ -23,6 +30,7 @@ public class platform_Instantiator : MonoBehaviour
 
 
     string[] platform_prob = { "reg", "reg", "reg","reg","reg","hover", "hover" };//  array for skewing the chances of a specific platorm being spawned
+    string[] planet_prob = { "jupiter", "star", "star", "star", "star", "moon", "star","moon","star", "star", "star", "star", "neptune","star", "uranus","star","star","star","star","star","star"};
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     void Start()
@@ -43,6 +51,8 @@ public class platform_Instantiator : MonoBehaviour
     {
         float cameraHeight = Camera.main.orthographicSize * 2f;
         float cameraWidth = cameraHeight * Camera.main.aspect;
+        float cameraPos = Camera.main.transform.position.y;
+        float topOfScreen = cameraPos + (cameraHeight*.5f);
         if (doodle.transform.position.y > storeDoodleY)
         {
             storeDoodleY = doodle.transform.position.y;// so score will be the highest doodle gets
@@ -54,6 +64,8 @@ public class platform_Instantiator : MonoBehaviour
         if (doodleScore>((instantiateInc)*groupCounter))
         {
             SpawnGroup("top");
+            clone = Instantiate(space, new Vector3(0,topOfScreen,0), Quaternion.identity);
+            Debug.Log("hover instantiated");
             groupCounter++;
         }
 
@@ -80,6 +92,43 @@ public class platform_Instantiator : MonoBehaviour
         }
 
     }
+
+    void SpawnPlanets(float x, float y)
+    {
+        int randint = UnityEngine.Random.Range(0, planet_prob.Length);
+        string planet = planet_prob[randint];
+        Debug.Log("planet picked: " + planet);
+        Vector3 SpawnPosition = new Vector3(x, y, 0);
+
+        if (planet == "moon")
+        {
+            clone = Instantiate(moon, SpawnPosition, Quaternion.identity);
+            Debug.Log("moon instantiated");
+        }
+        else if (planet== "jupiter")
+        {
+            clone = Instantiate(jupiter, SpawnPosition, Quaternion.identity);
+            Debug.Log("jupiter instantiated");
+        }
+        else if (planet == "uranus")
+        {
+            clone = Instantiate(uranus, SpawnPosition, Quaternion.identity);
+            Debug.Log("uranus instantiated");
+        }
+        else if (planet == "neptune")
+        {
+            clone = Instantiate(neptune, SpawnPosition, Quaternion.identity);
+            Debug.Log("neptune instantiated");
+        }
+        else if (planet == "star")
+        {
+            clone = Instantiate(star, SpawnPosition, Quaternion.identity);
+            Debug.Log("star instantiated");
+        }
+
+    }
+
+
     void SpawnGroup(string screenPlacement)//top bottom or middle
     {
 
@@ -89,15 +138,19 @@ public class platform_Instantiator : MonoBehaviour
             if (screenPlacement == "top")
             {
                 SpawnPlatform(XRandomizer(), YRandomizer("top"));
+                SpawnPlanets(XRandomizer(), YRandomizer("top"));
             }
             else if (screenPlacement == "bottom")
             {
                 SpawnPlatform(XRandomizer(), YRandomizer("bottom"));
+                SpawnPlanets(XRandomizer(), YRandomizer("top"));
             }
             else
             {
                 SpawnPlatform(XRandomizer(), YRandomizer("middle"));
+                SpawnPlanets(XRandomizer(), YRandomizer("top"));
             }
+            
             platformCounter++;
         }
     }
