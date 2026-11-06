@@ -1,5 +1,6 @@
 
 using System;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class platform_Instantiator : MonoBehaviour
@@ -24,6 +25,7 @@ public class platform_Instantiator : MonoBehaviour
     float instantiateInc; // every certain amount up doodle goes, instantiate group of platforms
     int groupCounter=1;
     public int groupNum;//number of platforms in an instantiated group
+    public Text score;
 
 
   
@@ -48,16 +50,22 @@ public class platform_Instantiator : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+     
     {
         float cameraHeight = Camera.main.orthographicSize * 2f;
         float cameraWidth = cameraHeight * Camera.main.aspect;
         float cameraPos = Camera.main.transform.position.y;
         float topOfScreen = cameraPos + (cameraHeight*.5f);
+        RectTransform scoreRect = score.GetComponent<RectTransform>();//so the text position is relative to the camera
+        scoreRect.anchoredPosition = new Vector3(-150, 150, 0);
+        Debug.Log("is transform " + doodle.transform.position.y + " more than storedoodle"+ storeDoodleY + "?: " + storeDoodleY);
         if (doodle.transform.position.y > storeDoodleY)
         {
             storeDoodleY = doodle.transform.position.y;// so score will be the highest doodle gets
+            doodleScore = doodle.transform.position.y - doodleStart;// score will always start at zero no matter where doodle starts
         }
-        doodleScore= doodle.transform.position.y-doodleStart;// score will always start at zero no matter where doodle starts
+        
+        score.text = ""+ Mathf.CeilToInt(doodleScore);
 
         Debug.Log("doodle score: "+ doodleScore);
         instantiateInc = .5f * cameraHeight;

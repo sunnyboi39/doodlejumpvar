@@ -69,7 +69,7 @@ public class moving_platform : MonoBehaviour
        
         Debug.Log("transform position: "+ transform.position.x);
 
-        transform.position = currentPosition;
+
 
         void moveRight()
         {
