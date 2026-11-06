@@ -9,6 +9,6 @@ PhysicsMaterial2D:
   m_Name: platform bouncy
   serializedVersion: 2
   friction: 1
-  bounciness: 1.05
+  bounciness: 1.2
   m_FrictionCombine: 3
   m_BounceCombine: 3

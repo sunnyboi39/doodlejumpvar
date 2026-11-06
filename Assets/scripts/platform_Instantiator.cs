@@ -107,7 +107,7 @@ public class platform_Instantiator : MonoBehaviour
         float cameraHeightHalf = Camera.main.orthographicSize; //half camera height
         float bottomOfScreen = cameraPos - cameraHeightHalf;
         int randint = UnityEngine.Random.Range(0, spacing + 1);
-        float ySection =bottomOfScreen+(((2 * cameraHeightHalf) / spacing)*randint);
+        float ySection =cameraPos+(((cameraHeightHalf) / spacing)*randint);
         return ySection;
 
 

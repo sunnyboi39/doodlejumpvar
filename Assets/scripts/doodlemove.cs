@@ -17,7 +17,7 @@ public class doodlemove : MonoBehaviour
         float cameraWidth = cameraHeight * Camera.main.aspect;
         Vector3 currentPosition = transform.position;
         currentPosition.x = 0;
-        currentPosition.z = 0;
+        currentPosition.z = 2;
         transform.position = currentPosition;
         Debug.Log("start transform position: " + transform.position);
 
@@ -46,12 +46,12 @@ public class doodlemove : MonoBehaviour
         {
 
             Debug.Log("leftarrow key pressed");
-            transform.position=new Vector3(transform.position.x-moveSpeed, transform.position.y,0);
+            transform.position=new Vector3(transform.position.x-moveSpeed, transform.position.y,2);
             
             if (transform.position.x <= cameraLeftBoundry) // if hits left bound-appear at right bound
             {
                 Debug.Log("hit left bound");
-                transform.position = new Vector3( cameraRightBoundry-5, transform.position.y, 0);
+                transform.position = new Vector3( cameraRightBoundry-5, transform.position.y, 2);
 
             }
 
@@ -61,12 +61,12 @@ public class doodlemove : MonoBehaviour
         {
 
             Debug.Log("right arrow key pressed");
-            transform.position = new Vector3(transform.position.x + moveSpeed, transform.position.y, 0);
+            transform.position = new Vector3(transform.position.x + moveSpeed, transform.position.y, 2);
 
             if (transform.position.x >= cameraRightBoundry) // if hits right bound-appear at left bound
             {
                 Debug.Log("hit right bound");
-                transform.position = new Vector3(cameraLeftBoundry + 5, transform.position.y, 0);
+                transform.position = new Vector3(cameraLeftBoundry + 5, transform.position.y, 2);
 
             }
 
