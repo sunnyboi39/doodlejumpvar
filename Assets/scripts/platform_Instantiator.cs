@@ -21,7 +21,7 @@ public class platform_Instantiator : MonoBehaviour
     private GameObject doodle;
     float doodleStart;
     float storeDoodleY;
-    float doodleScore;
+    public static float doodleScore;
     float instantiateInc; // every certain amount up doodle goes, instantiate group of platforms
     int groupCounter=1;
     public int groupNum;//number of platforms in an instantiated group
